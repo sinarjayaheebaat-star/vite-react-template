@@ -1,14 +1,237 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vite + React + TS</title>
-	</head>
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://sinarterang-44v.pages.dev/ -->
+<html lang="id"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<meta name="google-site-verification" content="X-atFehF67h3peUOMLNhBX0dPBDkZCms-TYvmIMDLgo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINAR TERANG - Digital- printing-cetak stiker a3+ bikin buku yasin-percetakan</title>
+    <meta name="description" content="Pusat cetak stiker A3+ HD, buku yasin, dan jasa percetakan murah di Driyorejo, Gresik. 
+    Kualitas tajam, proses cepat, dan pelayanan amanah. Hubungi Sinar Terang sekarang!">
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; padding: 0;
+            background: linear-gradient(135deg, #1a0a2e 0%, #4a0e2e 50%, #801b1b 100%); 
+            display: flex; justify-content: center;
+            min-height: 100vh; overflow-x: hidden; color: white;
+        }
+/* STYLE MODAL LEBARAN */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+            backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #1a0a2e 0%, #4a0e2e 100%);
+            padding: 30px; border-radius: 25px; max-width: 400px; width: 90%;
+            text-align: center; border: 2px solid #ffd7e5;
+            box-shadow: 0 0 30px rgba(255,105,180,0.4);
+            position: relative; animation: zoomIn 0.5s ease;
+        }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-content h2 { color: #ffd7e5; margin-bottom: 10px; font-size: 24px; letter-spacing: 2px; }
+        .modal-content p { font-size: 15px; line-height: 1.6; color: #eee; }
+        .close-btn {
+            background: #ffd7e5; color: #4a0e2e; border: none; padding: 10px 25px;
+            border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 20px;
+            transition: 0.3s;
+        }
+        .close-btn:hover { transform: scale(1.1); background: white; }
 
-	<body>
-		<div id="root"></div>
-		<script type="module" src="/src/react-app/main.tsx"></script>
-	</body>
+        /* ANIMASI BINTANG JATUH (FULL SCREEN) */
+        .stars-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+        .star {
+            position: absolute; background: white; border-radius: 50%; opacity: 0.9;
+            animation: fall linear infinite; box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9);
+        }
+        @keyframes fall {
+            from { transform: translateY(-10vh) translateX(0px); }
+            to { transform: translateY(110vh) translateX(80px); }
+        }
+
+        /* CONTAINER TRANSPARAN TOTAL */
+        .container { 
+            width: 100%; max-width: 480px; background: transparent; 
+            min-height: 100vh; position: relative; z-index: 1; padding-bottom: 50px;
+        }
+
+        /* HEADER */
+        .header-sunset { text-align: center; padding: 60px 20px 20px; }
+        .header-sunset h1 { 
+            font-size: 34px; margin: 0; color: #ffd7e5; text-transform: uppercase; 
+            letter-spacing: 5px; text-shadow: 0 0 25px rgba(255,105,180,0.8); 
+        }
+        .header-sunset p { 
+            font-size: 14px; margin: 25px auto 0; line-height: 1.7; 
+            background: rgba(0,0,0,0.2); padding: 15px; border-radius: 20px; font-style: italic;
+            max-width: 90%;
+        }
+
+        /* TOMBOL BIO LINK */
+        .link-group { padding: 20px 15px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-bio { 
+            display: flex; align-items: center; text-decoration: none; padding: 16px 20px; 
+            border-radius: 50px; color: white !important; font-weight: 700; font-size: 14px; 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3); transition: 0.3s; cursor: pointer; border: none; width: 100%;
+        }
+        .btn-bio:hover { transform: scale(1.04); filter: brightness(1.1); }
+        .icon-box { 
+            width: 35px; height: 35px; background: rgba(0,0,0,0.25); border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px; flex-shrink: 0;
+        }
+
+        /* FITUR SUB-MENU (DROPDOWN) */
+        .sub-menu { 
+            display: none; flex-direction: column; gap: 10px; padding: 15px; 
+            background: rgba(255, 255, 255, 0.1); border-radius: 20px; margin-top: -5px; 
+        }
+        .btn-sub { 
+            display: flex; align-items: center; text-decoration: none; padding: 14px 20px; 
+            border-radius: 15px; color: white; font-size: 13px; font-weight: 600; background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* WARNA GRADASI TOMBOL */
+        .wa { background: linear-gradient(to right, #11998e, #38ef7d); }
+        .catalog { background: linear-gradient(to right, #d4418e, #5a189a); }
+        .shopee { background: linear-gradient(to right, #f12711, #f5af19); }
+        .tiktok { background: linear-gradient(to right, #000000, #434343); }
+        .fb { background: linear-gradient(to right, #0052D4, #4364F7); }
+        .ig { background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); }
+        .yt { background: linear-gradient(to right, #e52d27, #b31217); }
+        .map { background: linear-gradient(to right, #2193b0, #6dd5ed); }
+
+        /* SEKSI PRODUK */
+        .product-section { padding: 30px 20px; }
+        .keyword-title { font-size: 20px; font-weight: 900; text-align: center; margin: 20px 0; padding: 15px; border-radius: 15px; background: rgba(128,27,27,0.7); border: 1px solid rgba(255,255,255,0.1); }
+        .product-card { background: rgba(255,255,255,0.05); border-radius: 25px; margin-bottom: 35px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); }
+        .product-card img { width: 100%; display: block; }
+        .product-desc { padding: 25px; }
+        .product-desc b { color: #ffd7e5; font-size: 17px; display: block; margin-bottom: 8px; }
+
+        .footer { text-align: center; font-size: 11px; color: #bbb; padding: 60px 20px; line-height: 2; }
+    </style>
+</head>
+<body>
+
+    <div id="lebaranModal" class="modal-overlay">
+        <div class="modal-content">
+            <div style="font-size: 50px; margin-bottom: 10px;">🕌</div>
+            <h2>SINAR TERANG</h2>
+            <p><b>Selamat Hari Raya Idul Fitri 1447 H</b><br>
+            Taqabbalallahu Minna Wa Minkum.<br><br>
+            Segenap tim Sinar Terang memohon maaf lahir dan batin atas segala khilaf. Terima kasih telah menjadi pelanggan setia kami.</p>
+            <button class="close-btn" onclick="closeModal()">Lanjut ke Website</button>
+        </div>
+    </div>
+
+    <div class="stars-container" id="stars"></div>
+
+    <div class="container">
+        <div class="header-sunset">
+            <h1>SINAR TERANG</h1>
+            <p>"Pusat Belanja Pilihan & Terpercaya. Menyediakan produk kualitas premium dengan pelayanan amanah."</p>
+        </div>
+
+        <div class="link-group">
+            <a href="https://quran.kemenag.go.id/" class="btn-bio map"><div class="icon-box">🕌</div>MARI BACA AL QUR'AN KEMENAG</a>
+            <a href="https://tombolgame.pages.dev/" class="btn-bio shopee"><div class="icon-box">😸</div>PERMAINAN GAME SERU</a>
+            <a href="https://maps.app.goo.gl/8zBZ2mx3NsM4oS1n7" class="btn-bio map"><div class="icon-box">📍</div> GOOGLE MAPS)</a>
+            
+            <button onclick="toggleMenu('catalogMenu')" class="btn-bio catalog"><div class="icon-box">🔥</div> LIHAT KATALOG PRODUK (KLIK)</button>
+            <div id="catalogMenu" class="sub-menu">
+                <a href="https://dompetemasantam.pages.dev/" target="_blank" class="btn-sub">📔 Katalog Dompet Emas</a>
+                <a href="https://stikera3plus.pages.dev/" target="_blank" class="btn-sub">🖼️ Katalog Cetak Stiker</a>
+                <a href="https://lynk.id/sinarterangkrikilan" target="_blank" class="btn-sub">🌐 Katalog lyink id</a>
+		<a href="https://sinarterangprinting.pages.dev/" target="_blank" class="btn-sub">🌐 Katalog digital printing</a> 
+                <a href="https://websitemurahdriyorejo.pages.dev/" target="_blank" class="btn-sub">🌐 Katalog websitemurahdriyorejo</a> 
+                <a href="https://bikinwebsitedriyorejo.pages.dev/" target="_blank" class="btn-sub">🌐 Katalog bikinwebsitedriyorejo</a>
+                <a href="https://jasawebsitedriyorejo.pages.dev/" target="_blank" class="btn-sub">🌐 Katalog jasawebsitedriyorejo</a>  
+            </div>
+            
+            <button onclick="toggleMenu('shopeeMenu')" class="btn-bio shopee"><div class="icon-box">🛍️</div> BELANJA DI SHOPEE (KLIK)</button>
+            <div id="shopeeMenu" class="sub-menu">
+                <a href="https://shopee.co.id/product/1737498456/41578510815/" target="_blank" class="btn-sub">🔸 Shopee: Dompet Emas</a>
+                <a href="https://shopee.co.id/Cetak-Stiker-warna-hitam-putih-i.946062122.19387637132" target="_blank" class="btn-sub">🔸 Shopee: Cetak Stiker</a>
+            </div>
+
+            <a href="https://shop-id.tokopedia.com/view/product/1734266708163068962" class="btn-bio tiktok"><div class="icon-box">🎬</div>TIKTOK SHOP x TOKOPEDIA</a>
+            <a href="https://web.facebook.com/profile.php?id=61554674984083" class="btn-bio fb"><div class="icon-box">🔵</div> FACEBOOK FANS PAGE</a>
+            <a href="https://www.instagram.com/sinarterangkrikilan/" class="btn-bio ig"><div class="icon-box">📸</div> FOLLOW INSTAGRAM</a>
+            <a href="https://www.youtube.com/@sinarterangkrikilan" class="btn-bio yt"><div class="icon-box">▶️</div> YOUTUBE CHANNEL</a>
+            <a href="https://wa.me/6282234754499" class="btn-bio wa"><div class="icon-box">💬</div> CHAT ADMIN (FAST RESPON)</a>
+        </div>
+
+        <div id="katalog" class="product-section">
+            <div class="product-header"><h3>Produk Unggulan</h3></div>
+            <div class="dompet-promo">"Jangan biarkan aset emas Anda rusak atau lecet. Lindungi investasi Logam Mulia Anda dengan Luru Dompet Emas Premium."</div>
+            <div class="keyword-title">DOMPET EMAS ANTAM</div>
+            
+            <div class="product-card">
+            <img src="https://bek.link/gambarbebas/20260201-013443_28A%20(1).jpg">
+            <div class="product-desc">
+                <b>Kapasitas Besar 60 Slot</b>
+                <p>Cukup untuk menyimpan seluruh koleksi Antam, UBS, dan kartu investasi lainnya dalam satu dompet.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://bek.link/gambarbebas/20260201-013442_16A.jpg">
+            <div class="product-desc">
+                <b>Material Kulit Grade A</b>
+                <p>Tahan lama, anti kelupas, dan memberikan sentuhan mewah yang eksklusif.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://bek.link/gambarbebas/20260201-013442_3A.jpg">
+            <div class="product-desc">
+                <b>Plastik PVC Anti Lengket</b>
+                <p>Isian plastik bening tebal yang didesain khusus agar tidak menempel pada kemasan emas Anda.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://bek.link/gambarbebas/20260201-013442_25A.jpg">
+            <div class="product-desc">
+                <b>Jahitan Handmade Rapi</b>
+                <p>Dibuat oleh tangan ahli untuk memastikan kualitas jahitan yang kuat dan tahan bertahun-tahun.</p>
+            </div>
+        </div>
+
+            <div class="footer">
+                <b>SINAR TERANG OFFICIAL STORE</b><br>
+                Driyorejo, Gresik, Jawa Timur
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi Dropdown Menu
+        function toggleMenu(id) {
+            var m = document.getElementById(id);
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+        function closeModal() {
+            document.getElementById('lebaranModal').style.display = 'none';
+        }
+        // Efek Bintang Jatuh
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 35; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            s.style.left = Math.random() * 100 + '%';
+            const size = 6 + Math.random() * 8;
+            s.style.width = size + 'px'; s.style.height = size + 'px';
+            s.style.animationDuration = (5 + Math.random() * 12) + 's';
+            s.style.animationDelay = '-' + (Math.random() * 5) + 's';
+            starsContainer.appendChild(s);
+        }
+    </script>
+</body>
 </html>
